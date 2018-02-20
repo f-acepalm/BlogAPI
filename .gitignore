@@ -1,0 +1,6 @@
+BlogAPI.Tests/bin/
+BlogAPI.Tests/obj/
+BlogAPI/bin/
+BlogAPI/obj/
+packages/
+.vs/

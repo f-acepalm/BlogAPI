@@ -1,7 +1,11 @@
-﻿using System;
+﻿using DataAccessLayer;
+using IDataAccessLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using Unity;
+using Unity.Lifetime;
 
 namespace BlogAPI
 {
@@ -19,6 +23,8 @@ namespace BlogAPI
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+            
+            config.DependencyResolver = new UnityResolver(UnityContainerConfiguration.GetContainer());
         }
     }
 }

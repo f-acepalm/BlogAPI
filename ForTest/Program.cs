@@ -33,8 +33,11 @@ namespace ForTest
 
             //var comment = commentRep.Get(1);
             //postServ.Update(post);
-            postServ.Create(post);
+            //postServ.Create(post);
             var x = postServ.GetAll();
+            x.Wait();
+            var task = postServ.Delete(4);
+            task.Wait();
         }
     }
 }

@@ -2,6 +2,7 @@
 using IDataAccessLayer.Entities;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
@@ -13,38 +14,38 @@ namespace DataAccessLayer
     {
         private BlogDbContext _dbContex = new BlogDbContext();
 
-        public void Create(T entity)
+        public async Task Create(T entity)
         {
             _dbContex.Set<T>().Add(entity);
-            _dbContex.SaveChanges();
+            await _dbContex.SaveChangesAsync();
         }
 
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
-            var entity = Get(id);
+            var entity = await Get(id);
             if (entity != null)
             {
                 _dbContex.Set<T>().Remove(entity);
-                _dbContex.SaveChanges();
+                await _dbContex.SaveChangesAsync();
             }
         }
 
-        public T Get(int id)
+        public async Task<T> Get(int id)
         {
-            return _dbContex.Set<T>().FirstOrDefault(x => x.Id == id);
+            return await _dbContex.Set<T>().FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public List<T> GetAll()
+        public async Task<List<T>> GetAll()
         {
-            return _dbContex.Set<T>().ToList();
+            return await _dbContex.Set<T>().ToListAsync();
         }
 
-        public void Update(T entity)
+        public async Task Update(T entity)
         {
             try
             {
                 _dbContex.Entry(entity).State = System.Data.Entity.EntityState.Modified;
-                _dbContex.SaveChanges();
+                await _dbContex.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)
             {

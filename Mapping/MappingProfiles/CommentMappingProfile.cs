@@ -11,8 +11,8 @@ namespace Mapping.MappingProfiles
     {
         public CommentMappingProfile()
         {
-            CreateMap<IDataAccessLayer.Entities.Comment, Models.Comment>();
-            CreateMap<Models.Comment, IDataAccessLayer.Entities.Comment>();
+            //CreateMap<IDataAccessLayer.Entities.Comment, Models.Comment>();
+            //CreateMap<Models.Comment, IDataAccessLayer.Entities.Comment>();
         }
     }
 }

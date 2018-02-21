@@ -21,31 +21,33 @@ namespace Services
             _repository = repository;
         }
 
-        public void Create(ServiceType entity)
+        public async Task Create(ServiceType entity)
         {
-            _repository.Create(Mapper.Map<DbType>(entity));
+            await _repository.Create(Mapper.Map<DbType>(entity));
         }
 
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
-            _repository.Delete(id);
+            await _repository.Delete(id);
         }
 
-        public ServiceType Get(int id)
+        public async Task<ServiceType> Get(int id)
         {
-            return Mapper.Map<ServiceType>(_repository.Get(id));
+            var entity = await _repository.Get(id);
+            return Mapper.Map<ServiceType>(entity);
         }
 
-        public List<ServiceType> GetAll()
+        public async Task<List<ServiceType>> GetAll()
         {
-            return Mapper.Map<List<ServiceType>>(_repository.GetAll());
+            var entities = await _repository.GetAll();
+            return Mapper.Map<List<ServiceType>>(entities);
         }
 
-        public void Update(ServiceType entity)
+        public async Task Update(ServiceType entity)
         {
             try
             {
-                _repository.Update(Mapper.Map<DbType>(entity));
+                await _repository.Update(Mapper.Map<DbType>(entity));
             }
             catch (ArgumentException ex)
             {

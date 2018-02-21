@@ -7,6 +7,7 @@ using System.Web.Http;
 using Models;
 using IDataAccessLayer;
 using IDataAccessLayer.Entities;
+using System.Threading.Tasks;
 
 namespace BlogAPI.Controllers
 {
@@ -19,9 +20,9 @@ namespace BlogAPI.Controllers
             _postRepository = postRepository;
         }
 
-        public IEnumerable<IDataAccessLayer.Entities.Post> GetAllPosts()
+        public async Task<IEnumerable<IDataAccessLayer.Entities.Post>> GetAllPosts()
         {
-            return _postRepository.GetAll();
+            return await _postRepository.GetAll();
         }
 
         public IHttpActionResult GetPosts(int id)

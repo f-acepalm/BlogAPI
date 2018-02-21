@@ -13,8 +13,8 @@ namespace Mapping.MappingProfiles
     {
         public PostMappingProfile()
         {
-            CreateMap<IDataAccessLayer.Entities.Post, Models.Post>();
-            CreateMap<Models.Post, IDataAccessLayer.Entities.Post>();
+            //CreateMap<IDataAccessLayer.Entities.Post, Models.Post>();
+            //CreateMap<Models.Post, IDataAccessLayer.Entities.Post>();
         }
     }
 }

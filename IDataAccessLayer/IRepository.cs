@@ -9,14 +9,14 @@ namespace IDataAccessLayer
 {
     public interface IRepository<T> where T : Entity
     {
-        void Create(T entity);
+        Task Create(T entity);
 
-        void Update(T entity);
+        Task Update(T entity);
 
-        void Delete(int id);
+        Task Delete(int id);
 
-        List<T> GetAll();
+        Task<List<T>> GetAll();
 
-        T Get(int id);
+        Task<T> Get(int id);
     }
 }

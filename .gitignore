@@ -4,3 +4,9 @@ BlogAPI/bin/
 BlogAPI/obj/
 packages/
 .vs/
+DependencyResolver/obj/
+DataAccessLayer/obj/
+ForTest/bin/
+ForTest/obj/
+Models/obj/
+IDataAccessLayer/obj/

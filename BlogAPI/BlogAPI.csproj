@@ -132,10 +132,6 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
-      <Project>{88886A11-D2F3-4310-B490-91BBF81277AF}</Project>
-      <Name>DataAccessLayer</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DependencyResolver\DependencyResolver.csproj">
       <Project>{8e7799bd-7989-462d-aa90-6b7213b0a6c8}</Project>
       <Name>DependencyResolver</Name>

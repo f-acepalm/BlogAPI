@@ -14,7 +14,5 @@ namespace Models
         public string Text { get; set; }
 
         public Comment Comments { get; set; }
-
-        public string UserName { get; set; }
     }
 }

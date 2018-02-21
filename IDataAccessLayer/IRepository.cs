@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IDataAccessLayer.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace IDataAccessLayer
 {
-    public interface IRepository<T>
+    public interface IRepository<T> where T : Entity
     {
         void Create(T entity);
 

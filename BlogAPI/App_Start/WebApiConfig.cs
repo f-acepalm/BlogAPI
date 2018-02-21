@@ -1,5 +1,4 @@
-﻿using DataAccessLayer;
-using IDataAccessLayer;
+﻿using IDataAccessLayer;
 using System;
 using System.Collections.Generic;
 using System.Linq;

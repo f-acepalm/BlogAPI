@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using Models;
 using IDataAccessLayer;
-using Entities.IDataAccessLayer;
+using IDataAccessLayer.Entities;
 
 namespace BlogAPI.Controllers
 {
@@ -19,7 +19,7 @@ namespace BlogAPI.Controllers
             _postRepository = postRepository;
         }
 
-        public IEnumerable<IPost> GetAllPosts()
+        public IEnumerable<IDataAccessLayer.Entities.Post> GetAllPosts()
         {
             return _postRepository.GetAll();
         }

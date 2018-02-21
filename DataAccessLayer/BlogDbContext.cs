@@ -12,6 +12,7 @@ namespace DataAccessLayer
     {
         public BlogDbContext() : base("DefaultConnection")
         {
+            Database.SetInitializer(new BlogDbInitializer()); 
         }
 
         public IDbSet<Post> Posts { get; set; }

@@ -10,3 +10,8 @@ ForTest/bin/
 ForTest/obj/
 Models/obj/
 IDataAccessLayer/obj/
+Services/obj/
+Services/bin/
+Mapping/obj/
+IServices/obj/
+Mapping/bin/

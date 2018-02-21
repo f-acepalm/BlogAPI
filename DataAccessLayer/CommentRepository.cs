@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    public class CommentRopository : BaseRepository<Comment>, ICommentRepository
+    public class CommentRepository : BaseRepository<Comment>, ICommentRepository
     {
     }
 }

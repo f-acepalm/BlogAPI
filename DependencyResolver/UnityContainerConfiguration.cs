@@ -16,6 +16,7 @@ namespace BlogAPI
         {
             var container = new UnityContainer();
             container.RegisterType<IPostRepository, PostRepository>(new HierarchicalLifetimeManager());
+            container.RegisterType<ICommentRepository, CommentRepository>(new HierarchicalLifetimeManager());
 
             return container;
         }

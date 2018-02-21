@@ -2,6 +2,7 @@
 using IDataAccessLayer.Entities;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,8 +41,15 @@ namespace DataAccessLayer
 
         public void Update(T entity)
         {
-            _dbContex.Entry(entity).State = System.Data.Entity.EntityState.Modified;
-            _dbContex.SaveChanges();
+            try
+            {
+                _dbContex.Entry(entity).State = System.Data.Entity.EntityState.Modified;
+                _dbContex.SaveChanges();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                throw new ArgumentException($"{entity.Id} is invalid Id.");
+            }
         }
     }
 }

@@ -140,6 +140,10 @@
       <Project>{a0613847-e99a-48d2-bee4-85e4b2041e2d}</Project>
       <Name>IDataAccessLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Mapping\Mapping.csproj">
+      <Project>{AABDD663-37AB-4778-9056-C89D9865ED1F}</Project>
+      <Name>Mapping</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{4107af26-6974-4433-b84f-adb1eb491106}</Project>
       <Name>Models</Name>

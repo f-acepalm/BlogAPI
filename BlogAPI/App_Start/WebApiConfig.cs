@@ -1,4 +1,5 @@
 ﻿using IDataAccessLayer;
+using Mapping;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,7 @@ namespace BlogAPI
             );
             
             config.DependencyResolver = new UnityResolver(UnityContainerConfiguration.GetContainer());
+            MapperInitializer.Initialize();
         }
     }
 }

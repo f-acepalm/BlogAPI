@@ -65,6 +65,18 @@
       <Project>{A0613847-E99A-48D2-BEE4-85E4B2041E2D}</Project>
       <Name>IDataAccessLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\IServices\IServices.csproj">
+      <Project>{4AE582FD-BB5E-4C53-81F2-64D7CEE350E0}</Project>
+      <Name>IServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mapping\Mapping.csproj">
+      <Project>{AABDD663-37AB-4778-9056-C89D9865ED1F}</Project>
+      <Name>Mapping</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services\Services.csproj">
+      <Project>{0DB4B416-396C-4BED-8D40-ABDDA5848237}</Project>
+      <Name>Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

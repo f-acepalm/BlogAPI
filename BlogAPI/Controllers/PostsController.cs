@@ -5,29 +5,31 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using Models;
-using IDataAccessLayer;
-using IDataAccessLayer.Entities;
 using System.Threading.Tasks;
+using IServices;
+using AutoMapper;
 
 namespace BlogAPI.Controllers
 {
     public class PostsController : ApiController
     {
-        private IPostRepository _postRepository;
+        private IPostService _postService;
 
-        public PostsController(IPostRepository postRepository)
+        public PostsController(IPostService postService)
         {
-            _postRepository = postRepository;
+            _postService = postService;
         }
 
-        public async Task<IEnumerable<IDataAccessLayer.Entities.Post>> GetAllPosts()
+        public async Task<IEnumerable<Post>> GetAllPosts()
         {
-            return await _postRepository.GetAll();
+            var posts = await _postService.GetAll();
+
+            return Mapper.Map<List<Post>>(posts);
         }
 
-        public IHttpActionResult GetPosts(int id)
+        public async Task<IHttpActionResult> GetPosts(int id)
         {
-            var post = _postRepository.Get(id);
+            var post = await _postService.Get(id);
             if (post == null)
             {
                 return NotFound();

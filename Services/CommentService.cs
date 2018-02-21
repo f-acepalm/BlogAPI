@@ -9,9 +9,9 @@ using IDataAccessLayer;
 
 namespace Services
 {
-    public class PostService : BaseService<Post, IDataAccessLayer.Entities.Post>, IPostService
+    public class CommentService : BaseService<Comment, IDataAccessLayer.Entities.Comment>, ICommentService
     {
-        public PostService(IPostRepository repository) : base(repository)
+        public CommentService(ICommentRepository repository) : base(repository)
         {
         }
     }

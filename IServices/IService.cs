@@ -9,11 +9,11 @@ namespace IServices
 {
     public interface IService<T> where T : Entity
     {
-        Task Create(T entity);
+        Task<T> Create(T entity);
 
-        Task Update(T entity);
+        Task<bool> Update(T entity);
 
-        Task Delete(int id);
+        Task<bool> Delete(int id);
 
         Task<List<T>> GetAll();
 

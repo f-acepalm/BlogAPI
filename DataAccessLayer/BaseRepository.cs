@@ -14,19 +14,27 @@ namespace DataAccessLayer
     {
         private BlogDbContext _dbContex = new BlogDbContext();
 
-        public async Task Create(T entity)
+        public async Task<T> Create(T entity)
         {
             _dbContex.Set<T>().Add(entity);
             await _dbContex.SaveChangesAsync();
+
+            return entity;
         }
 
-        public async Task Delete(int id)
+        public async Task<bool> Delete(int id)
         {
             var entity = await Get(id);
             if (entity != null)
             {
                 _dbContex.Set<T>().Remove(entity);
                 await _dbContex.SaveChangesAsync();
+
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 

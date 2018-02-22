@@ -57,6 +57,10 @@
       <Project>{a0613847-e99a-48d2-bee4-85e4b2041e2d}</Project>
       <Name>IDataAccessLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\IServices\IServices.csproj">
+      <Project>{4AE582FD-BB5E-4C53-81F2-64D7CEE350E0}</Project>
+      <Name>IServices</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{4107AF26-6974-4433-B84F-ADB1EB491106}</Project>
       <Name>Models</Name>

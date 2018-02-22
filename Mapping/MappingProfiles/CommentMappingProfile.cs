@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using IServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +12,11 @@ namespace Mapping.MappingProfiles
     {
         public CommentMappingProfile()
         {
-            //CreateMap<IDataAccessLayer.Entities.Comment, Models.Comment>();
-            //CreateMap<Models.Comment, IDataAccessLayer.Entities.Comment>();
+            CreateMap<IDataAccessLayer.Entities.Comment, IServices.Entities.Comment>();
+            CreateMap<IServices.Entities.Comment, IDataAccessLayer.Entities.Comment>();
+            
+            CreateMap<Models.Comment, IServices.Entities.Comment>();
+            CreateMap<IServices.Entities.Comment, Models.Comment>();
         }
     }
 }

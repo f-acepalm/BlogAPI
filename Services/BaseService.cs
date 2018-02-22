@@ -21,14 +21,16 @@ namespace Services
             _repository = repository;
         }
 
-        public async Task Create(ServiceType entity)
+        public async Task<ServiceType> Create(ServiceType entity)
         {
-            await _repository.Create(Mapper.Map<DbType>(entity));
+            var result = await _repository.Create(Mapper.Map<DbType>(entity));
+
+            return Mapper.Map<ServiceType>(result);
         }
 
-        public async Task Delete(int id)
+        public async Task<bool> Delete(int id)
         {
-            await _repository.Delete(id);
+            return await _repository.Delete(id);
         }
 
         public async Task<ServiceType> Get(int id)
@@ -43,15 +45,17 @@ namespace Services
             return Mapper.Map<List<ServiceType>>(entities);
         }
 
-        public async Task Update(ServiceType entity)
+        public async Task<bool> Update(ServiceType entity)
         {
             try
             {
                 await _repository.Update(Mapper.Map<DbType>(entity));
+
+                return true;
             }
             catch (ArgumentException ex)
             {
-                throw ex;
+                return false;
             }
         }
     }

@@ -30,13 +30,22 @@ namespace DataAccessLayer
                 .WillCascadeOnDelete();
 
             modelBuilder.Entity<Post>()
-                .Property(x => x.Title).HasMaxLength(30);
+                .Property(x => x.Title)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            modelBuilder.Entity<Post>()
+                .Property(x => x.Text)
+                .IsRequired()
+                .HasMaxLength(1000);
 
             modelBuilder.Entity<Comment>()
                 .HasKey(x => x.Id);
 
             modelBuilder.Entity<Comment>()
-                .Property(x => x.Text).HasMaxLength(10000);
+                .Property(x => x.Text)
+                .IsRequired()
+                .HasMaxLength(1000);
 
             base.OnModelCreating(modelBuilder);
         }

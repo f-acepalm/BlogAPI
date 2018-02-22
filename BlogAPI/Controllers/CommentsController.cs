@@ -20,11 +20,11 @@ namespace BlogAPI.Controllers
             _commentService = commentService;
         }
 
-        public async Task<IEnumerable<Comment>> GetAllComments()
+        public async Task<IHttpActionResult> GetAllComments()
         {
             var comments = await _commentService.GetAll();
 
-            return Mapper.Map<List<Comment>>(comments);
+            return Ok(Mapper.Map<List<Comment>>(comments));
         }
 
         public async Task<IHttpActionResult> GetComments(int id)
@@ -38,34 +38,48 @@ namespace BlogAPI.Controllers
             return Ok(comment);
         }
 
-        public async Task<HttpResponseMessage> PostComment(Comment item)
+        public async Task<IHttpActionResult> PostComment(Comment item)
         {
+            if (item == null)
+            {
+                return BadRequest();
+            }
+
             item = Mapper.Map<Comment>(await _commentService.Create(Mapper.Map<IServices.Entities.Comment>(item)));
             var response = Request.CreateResponse(HttpStatusCode.Created, item);
 
             string uri = Url.Link("DefaultApi", new { id = item.Id });
             response.Headers.Location = new Uri(uri);
 
-            return response;
+            return ResponseMessage(response);
         }
 
-        public async Task PutComment(int id, Comment comment)
+        public async Task<IHttpActionResult> PutComment(int id, Comment comment)
         {
+            if (comment == null)
+            {
+                return BadRequest();
+            }
+
             comment.Id = id;
             var isUpdated = await _commentService.Update(Mapper.Map<IServices.Entities.Comment>(comment));
             if (!isUpdated)
             {
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
             }
+
+            return Ok();
         }
 
-        public async Task DeleteComment(int id)
+        public async Task<IHttpActionResult> DeleteComment(int id)
         {
             var isDeleted = await _commentService.Delete(id);
             if (!isDeleted)
             {
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
             }
+
+            return Ok();
         }
     }
 }

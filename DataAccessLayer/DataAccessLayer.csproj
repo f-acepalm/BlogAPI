@@ -55,6 +55,10 @@
     <Compile Include="Migrations\201802211743115_InitialCreate.Designer.cs">
       <DependentUpon>201802211743115_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802221924592_changedConstraints.cs" />
+    <Compile Include="Migrations\201802221924592_changedConstraints.Designer.cs">
+      <DependentUpon>201802221924592_changedConstraints.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PostRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,6 +76,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201802211743115_InitialCreate.resx">
       <DependentUpon>201802211743115_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802221924592_changedConstraints.resx">
+      <DependentUpon>201802221924592_changedConstraints.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

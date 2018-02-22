@@ -8,9 +8,11 @@ using Models;
 using System.Threading.Tasks;
 using IServices;
 using AutoMapper;
+using BlogAPI.Filters;
 
 namespace BlogAPI.Controllers
 {
+    [ValidateModel]
     public class PostsController : ApiController
     {
         private IPostService _postService;
@@ -20,11 +22,11 @@ namespace BlogAPI.Controllers
             _postService = postService;
         }
 
-        public async Task<IEnumerable<Post>> GetAllPosts()
+        public async Task<IHttpActionResult> GetAllPosts()
         {
             var posts = await _postService.GetAll();
 
-            return Mapper.Map<List<Post>>(posts);
+            return Ok(Mapper.Map<List<Post>>(posts));
         }
 
         public async Task<IHttpActionResult> GetPosts(int id)
@@ -38,34 +40,48 @@ namespace BlogAPI.Controllers
             return Ok(post);
         }
 
-        public async Task<HttpResponseMessage> PostPost(Post item)
+        public async Task<IHttpActionResult> PostPost(Post item)
         {
+            if (item == null)
+            {
+                return BadRequest();
+            }
+
             item = Mapper.Map<Post>(await _postService.Create(Mapper.Map<IServices.Entities.Post>(item)));
             var response = Request.CreateResponse(HttpStatusCode.Created, item);
 
             string uri = Url.Link("DefaultApi", new { id = item.Id });
             response.Headers.Location = new Uri(uri);
 
-            return response;
+            return ResponseMessage(response);
         }
 
-        public async Task PutPost(int id, Post post)
+        public async Task<IHttpActionResult> PutPost(int id, Post post)
         {
+            if (post == null)
+            {
+                return BadRequest();
+            }
+
             post.Id = id;
             var isUpdated = await _postService.Update(Mapper.Map<IServices.Entities.Post>(post));
             if (!isUpdated)
             {
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
             }
+
+            return Ok();
         }
 
-        public async Task DeletePost(int id)
+        public async Task<IHttpActionResult> DeletePost(int id)
         {
             var isDeleted = await _postService.Delete(id);
             if (!isDeleted)
             {
-                throw new HttpResponseException(HttpStatusCode.NotFound);
+                return NotFound();
             }
+
+            return Ok();
         }
     }
 }

@@ -14,30 +14,30 @@ namespace ForTest
     {
         static void Main(string[] args)
         {
-            MapperInitializer.Initialize();
+            //MapperInitializer.Initialize();
 
-            var postRep = new PostRepository();
-            var commentRep = new CommentRepository();
-            var postServ = new PostService(postRep);
-            var post = new IServices.Entities.Post() { Title = "Test2", Text = "Test2" };
+            ////var postRep = new PostRepository();
+            ////var commentRep = new CommentRepository();
+            ////var postServ = new PostService(postRep);
+            ////var post = new IServices.Entities.Post() { Title = "Test2", Text = "Test2" };
 
-            //post.Comments.Add(new Comment() { Text = "WAT" });
+            ////post.Comments.Add(new Comment() { Text = "WAT" });
 
-            //postRep.Create(post);
-            //postRep.Update(post);
-            //postRep.Delete(3);
+            ////postRep.Create(post);
+            ////postRep.Update(post);
+            ////postRep.Delete(3);
 
-            //var list = postRep.GetAll();
-            //var y = postRep.Get(2);
-            //var s = y.Comments.ToList();
+            ////var list = postRep.GetAll();
+            ////var y = postRep.Get(2);
+            ////var s = y.Comments.ToList();
 
-            //var comment = commentRep.Get(1);
-            //postServ.Update(post);
-            //postServ.Create(post);
-            var x = postServ.GetAll();
-            x.Wait();
-            var task = postServ.Delete(4);
-            task.Wait();
+            ////var comment = commentRep.Get(1);
+            ////postServ.Update(post);
+            ////postServ.Create(post);
+            //var x = postServ.GetAll();
+            //x.Wait();
+            //var task = postServ.Delete(4);
+            //task.Wait();
         }
     }
 }

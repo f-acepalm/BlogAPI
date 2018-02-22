@@ -1,4 +1,5 @@
-﻿using IDataAccessLayer.Entities;
+﻿using IDataAccessLayer;
+using IDataAccessLayer.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    public class BlogDbContext : DbContext
+    public class BlogDbContext : DbContext, IBlogDbContext
     {
         public BlogDbContext() : base("DefaultConnection")
         {
@@ -18,6 +19,12 @@ namespace DataAccessLayer
         public IDbSet<Post> Posts { get; set; }
 
         public IDbSet<Comment> Comments { get; set; }
+
+        public async Task MarkAsModified<T>(T item) where T : Entity
+        {
+            Entry(item).State = EntityState.Modified;
+            await SaveChangesAsync();
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

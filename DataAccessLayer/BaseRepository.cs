@@ -12,7 +12,12 @@ namespace DataAccessLayer
 {
     public class BaseRepository<T> : IRepository<T> where T : Entity
     {
-        private BlogDbContext _dbContex = new BlogDbContext();
+        private IBlogDbContext _dbContex;
+
+        public BaseRepository(IBlogDbContext context)
+        {
+            _dbContex = context;
+        }
 
         public async Task<T> Create(T entity)
         {
@@ -52,8 +57,7 @@ namespace DataAccessLayer
         {
             try
             {
-                _dbContex.Entry(entity).State = System.Data.Entity.EntityState.Modified;
-                await _dbContex.SaveChangesAsync();
+                await _dbContex.MarkAsModified(entity);
             }
             catch (DbUpdateConcurrencyException)
             {

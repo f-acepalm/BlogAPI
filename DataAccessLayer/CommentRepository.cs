@@ -10,5 +10,8 @@ namespace DataAccessLayer
 {
     public class CommentRepository : BaseRepository<Comment>, ICommentRepository
     {
+        public CommentRepository(IBlogDbContext context) : base(context)
+        {
+        }
     }
 }

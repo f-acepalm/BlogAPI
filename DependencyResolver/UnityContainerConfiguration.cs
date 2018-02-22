@@ -23,6 +23,8 @@ namespace BlogAPI
             container.RegisterType<IPostService, PostService>(new HierarchicalLifetimeManager());
             container.RegisterType<ICommentService, CommentService>(new HierarchicalLifetimeManager());
 
+            container.RegisterType<IBlogDbContext, BlogDbContext>(new HierarchicalLifetimeManager());
+            
             return container;
         }
     }

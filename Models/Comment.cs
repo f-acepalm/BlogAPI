@@ -6,10 +6,8 @@ using System.Web;
 
 namespace Models
 {
-    public class Comment
+    public class Comment : BaseModel
     {
-        public int Id { get; set; }
-
         public int PostId { get; set; }
 
         [Required]

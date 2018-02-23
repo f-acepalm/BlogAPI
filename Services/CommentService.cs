@@ -1,6 +1,6 @@
 ﻿using DataAccessLayer.Interfaces;
 using Services.Interfaces;
-using Services.Models;
+using Models;
 
 namespace Services
 {

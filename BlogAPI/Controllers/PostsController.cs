@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+﻿using System.Web.Http;
 using Models;
 using System.Threading.Tasks;
-using AutoMapper;
 using BlogAPI.Filters;
 using Services.Interfaces;
 
@@ -22,64 +16,36 @@ namespace BlogAPI.Controllers
             _postService = postService;
         }
 
-        public async Task<IHttpActionResult> GetAllPosts()
+        [HttpGet]
+        public async Task<IHttpActionResult> Get()
         {
-            var posts = await _postService.GetAll();
-
-            return Ok(Mapper.Map<List<Post>>(posts));
+            return Ok(await _postService.GetAll());
         }
 
-        public async Task<IHttpActionResult> GetPosts(int id)
+        [HttpGet]
+        public async Task<IHttpActionResult> Get(int id)
         {
-            var post = await _postService.Get(id);
-            if (post == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(post);
+            return Ok(await _postService.Get(id));
         }
 
-        public async Task<IHttpActionResult> PostPost(Post item)
+        [HttpPost]
+        public async Task<IHttpActionResult> Post([FromBody] Post model)
         {
-            if (item == null)
-            {
-                return BadRequest();
-            }
-
-            item = Mapper.Map<Post>(await _postService.Create(Mapper.Map<Services.Models.Post>(item)));
-            var response = Request.CreateResponse(HttpStatusCode.Created, item);
-
-            string uri = Url.Link("DefaultApi", new { id = item.Id });
-            response.Headers.Location = new Uri(uri);
-
-            return ResponseMessage(response);
+            return Ok(await _postService.Create(model));
         }
 
-        public async Task<IHttpActionResult> PutPost(int id, Post post)
+        [HttpPut]
+        public async Task<IHttpActionResult> Put(int id, [FromBody] Post model)
         {
-            if (post == null)
-            {
-                return BadRequest();
-            }
-
-            post.Id = id;
-            var isUpdated = await _postService.Update(Mapper.Map<Services.Models.Post>(post));
-            if (!isUpdated)
-            {
-                return NotFound();
-            }
+            await _postService.Update(id, model);
 
             return Ok();
         }
 
-        public async Task<IHttpActionResult> DeletePost(int id)
+        [HttpDelete]
+        public async Task<IHttpActionResult> Delete(int id)
         {
-            var isDeleted = await _postService.Delete(id);
-            if (!isDeleted)
-            {
-                return NotFound();
-            }
+            await _postService.Delete(id);
 
             return Ok();
         }

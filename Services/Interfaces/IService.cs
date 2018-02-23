@@ -1,19 +1,19 @@
-﻿using Services.Models;
+﻿using Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Services.Interfaces
 {
-    public interface IService<T> where T : Entity
+    public interface IService<TModel> where TModel : BaseModel
     {
-        Task<T> Create(T entity);
+        Task<TModel> Create(TModel model);
 
-        Task<bool> Update(T entity);
+        Task Update(int id, TModel model);
 
-        Task<bool> Delete(int id);
+        Task Delete(int id);
 
-        Task<List<T>> GetAll();
+        Task<List<TModel>> GetAll();
 
-        Task<T> Get(int id);
+        Task<TModel> Get(int id);
     }
 }

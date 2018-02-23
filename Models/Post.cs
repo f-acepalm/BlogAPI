@@ -6,14 +6,12 @@ using System.Web;
 
 namespace Models
 {
-    public class Post
+    public class Post : BaseModel
     {
         public Post()
         {
             Comments = new List<Comment>();
         }
-
-        public int Id { get; set; }
 
         [Required]
         [StringLength(100, MinimumLength = 1)]

@@ -10,7 +10,7 @@ namespace DataAccessLayer.Interfaces
 
         Task Update(T entity);
 
-        Task<bool> Delete(int id);
+        Task Delete(int id);
 
         Task<List<T>> GetAll();
 

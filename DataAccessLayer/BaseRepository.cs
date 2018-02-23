@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    public class BaseRepository<T> : IRepository<T> where T : Entity
+    public abstract class BaseRepository<T> : IRepository<T> where T : Entity
     {
         private IBlogDbContext _dbContex;
 
@@ -17,7 +17,7 @@ namespace DataAccessLayer
             _dbContex = context;
         }
 
-        public async Task<T> Create(T entity)
+        public virtual async Task<T> Create(T entity)
         {
             _dbContex.Set<T>().Add(entity);
             await _dbContex.SaveChangesAsync();
@@ -25,33 +25,31 @@ namespace DataAccessLayer
             return entity;
         }
 
-        public async Task<bool> Delete(int id)
+        public virtual async Task Delete(int id)
         {
             var entity = await Get(id);
             if (entity != null)
             {
                 _dbContex.Set<T>().Remove(entity);
                 await _dbContex.SaveChangesAsync();
-
-                return true;
             }
             else
             {
-                return false;
+                throw new ArgumentException($"{entity.Id} is invalid Id.");
             }
         }
 
-        public async Task<T> Get(int id)
+        public virtual async Task<T> Get(int id)
         {
             return await _dbContex.Set<T>().FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<List<T>> GetAll()
+        public virtual async Task<List<T>> GetAll()
         {
             return await _dbContex.Set<T>().ToListAsync();
         }
 
-        public async Task Update(T entity)
+        public virtual async Task Update(T entity)
         {
             try
             {

@@ -1,15 +1,10 @@
-﻿using IServices;
-using IServices.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using IDataAccessLayer;
+﻿using DataAccessLayer.Interfaces;
+using Services.Interfaces;
+using Services.Models;
 
 namespace Services
 {
-    public class PostService : BaseService<Post, IDataAccessLayer.Entities.Post>, IPostService
+    public class PostService : BaseService<Post, DataAccessLayer.Entities.Post>, IPostService
     {
         public PostService(IPostRepository repository) : base(repository)
         {

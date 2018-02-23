@@ -1,10 +1,4 @@
 ﻿using AutoMapper;
-using IServices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Mapping.MappingProfiles
 {
@@ -12,11 +6,11 @@ namespace Mapping.MappingProfiles
     {
         public CommentMappingProfile()
         {
-            CreateMap<IDataAccessLayer.Entities.Comment, IServices.Entities.Comment>();
-            CreateMap<IServices.Entities.Comment, IDataAccessLayer.Entities.Comment>();
+            CreateMap<DataAccessLayer.Entities.Comment, Services.Models.Comment>();
+            CreateMap<Services.Models.Comment, DataAccessLayer.Entities.Comment>();
             
-            CreateMap<Models.Comment, IServices.Entities.Comment>();
-            CreateMap<IServices.Entities.Comment, Models.Comment>();
+            CreateMap<Models.Comment, Services.Models.Comment>();
+            CreateMap<Services.Models.Comment, Models.Comment>();
         }
     }
 }

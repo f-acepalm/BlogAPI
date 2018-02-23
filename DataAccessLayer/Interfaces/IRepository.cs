@@ -1,11 +1,8 @@
-﻿using IDataAccessLayer.Entities;
-using System;
+﻿using DataAccessLayer.Entities;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace IDataAccessLayer
+namespace DataAccessLayer.Interfaces
 {
     public interface IRepository<T> where T : Entity
     {

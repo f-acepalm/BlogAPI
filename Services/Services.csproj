@@ -46,21 +46,23 @@
   <ItemGroup>
     <Compile Include="BaseService.cs" />
     <Compile Include="CommentService.cs" />
+    <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\Entity.cs" />
+    <Compile Include="Models\Post.cs" />
+    <Compile Include="Interfaces\ICommentService.cs" />
+    <Compile Include="Interfaces\IPostService.cs" />
+    <Compile Include="Interfaces\IService.cs" />
     <Compile Include="PostService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IDataAccessLayer\IDataAccessLayer.csproj">
-      <Project>{A0613847-E99A-48D2-BEE4-85E4B2041E2D}</Project>
-      <Name>IDataAccessLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IServices\IServices.csproj">
-      <Project>{4AE582FD-BB5E-4C53-81F2-64D7CEE350E0}</Project>
-      <Name>IServices</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
+      <Project>{88886A11-D2F3-4310-B490-91BBF81277AF}</Project>
+      <Name>DataAccessLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

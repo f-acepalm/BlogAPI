@@ -44,7 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MapperInitializer.cs" />
+    <Compile Include="AutoMapperInitializer.cs" />
     <Compile Include="MappingProfiles\CommentMappingProfile.cs" />
     <Compile Include="MappingProfiles\PostMappingProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -53,17 +53,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IDataAccessLayer\IDataAccessLayer.csproj">
-      <Project>{a0613847-e99a-48d2-bee4-85e4b2041e2d}</Project>
-      <Name>IDataAccessLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IServices\IServices.csproj">
-      <Project>{4AE582FD-BB5E-4C53-81F2-64D7CEE350E0}</Project>
-      <Name>IServices</Name>
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
+      <Project>{88886a11-d2f3-4310-b490-91bbf81277af}</Project>
+      <Name>DataAccessLayer</Name>
     </ProjectReference>
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{4107AF26-6974-4433-B84F-ADB1EB491106}</Project>
       <Name>Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services\Services.csproj">
+      <Project>{0DB4B416-396C-4BED-8D40-ABDDA5848237}</Project>
+      <Name>Services</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

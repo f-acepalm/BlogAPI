@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Mapping
 {
-    public class MapperInitializer
+    public class AutoMapperInitializer
     {
         public static void Initialize()
         {

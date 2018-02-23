@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IServices.Entities
+namespace Services.Models
 {
     public class Entity
     {

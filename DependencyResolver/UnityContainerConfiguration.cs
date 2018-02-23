@@ -1,13 +1,8 @@
 ﻿using DataAccessLayer;
-using IDataAccessLayer;
-using IServices;
+using DataAccessLayer.Interfaces;
 using Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using Services.Interfaces;
 using Unity;
-using Unity.Exceptions;
 using Unity.Lifetime;
 
 namespace BlogAPI

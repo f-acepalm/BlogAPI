@@ -24,7 +24,7 @@ namespace BlogAPI
             );
             
             config.DependencyResolver = new UnityResolver(UnityContainerConfiguration.GetContainer());
-            MapperInitializer.Initialize();
+            AutoMapperInitializer.Initialize();
         }
     }
 }

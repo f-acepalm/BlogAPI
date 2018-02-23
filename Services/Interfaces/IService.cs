@@ -1,11 +1,8 @@
-﻿using IServices.Entities;
-using System;
+﻿using Services.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace IServices
+namespace Services.Interfaces
 {
     public interface IService<T> where T : Entity
     {

@@ -1,12 +1,8 @@
-﻿using IDataAccessLayer.Entities;
-using System;
-using System.Collections.Generic;
+﻿using DataAccessLayer.Entities;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace IDataAccessLayer
+namespace DataAccessLayer.Interfaces
 {
     public interface IBlogDbContext
     {

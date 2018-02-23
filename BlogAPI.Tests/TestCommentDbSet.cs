@@ -1,9 +1,5 @@
-﻿using IDataAccessLayer.Entities;
-using System;
-using System.Collections.Generic;
+﻿using DataAccessLayer.Entities;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BlogAPI.Tests
 {

@@ -1,10 +1,7 @@
-﻿using IDataAccessLayer;
-using IDataAccessLayer.Entities;
+﻿using DataAccessLayer.Entities;
+using DataAccessLayer.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace BlogAPI.Tests

@@ -1,15 +1,10 @@
-﻿using IServices;
-using IServices.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using IDataAccessLayer;
+﻿using DataAccessLayer.Interfaces;
+using Services.Interfaces;
+using Services.Models;
 
 namespace Services
 {
-    public class CommentService : BaseService<Comment, IDataAccessLayer.Entities.Comment>, ICommentService
+    public class CommentService : BaseService<Comment, DataAccessLayer.Entities.Comment>, ICommentService
     {
         public CommentService(ICommentRepository repository) : base(repository)
         {

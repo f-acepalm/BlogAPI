@@ -6,9 +6,9 @@ using System.Net.Http;
 using System.Web.Http;
 using Models;
 using System.Threading.Tasks;
-using IServices;
 using AutoMapper;
 using BlogAPI.Filters;
+using Services.Interfaces;
 
 namespace BlogAPI.Controllers
 {
@@ -47,7 +47,7 @@ namespace BlogAPI.Controllers
                 return BadRequest();
             }
 
-            item = Mapper.Map<Post>(await _postService.Create(Mapper.Map<IServices.Entities.Post>(item)));
+            item = Mapper.Map<Post>(await _postService.Create(Mapper.Map<Services.Models.Post>(item)));
             var response = Request.CreateResponse(HttpStatusCode.Created, item);
 
             string uri = Url.Link("DefaultApi", new { id = item.Id });
@@ -64,7 +64,7 @@ namespace BlogAPI.Controllers
             }
 
             post.Id = id;
-            var isUpdated = await _postService.Update(Mapper.Map<IServices.Entities.Post>(post));
+            var isUpdated = await _postService.Update(Mapper.Map<Services.Models.Post>(post));
             if (!isUpdated)
             {
                 return NotFound();

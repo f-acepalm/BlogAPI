@@ -1,10 +1,6 @@
-﻿using IDataAccessLayer;
-using IDataAccessLayer.Entities;
-using System;
-using System.Collections.Generic;
+﻿using DataAccessLayer.Entities;
+using DataAccessLayer.Interfaces;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DataAccessLayer

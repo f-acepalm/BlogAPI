@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IDataAccessLayer.Entities
+namespace DataAccessLayer.Entities
 {
     public class Comment : Entity
     {

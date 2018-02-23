@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using IServices;
-using IServices.Entities;
-using IDataAccessLayer;
 using AutoMapper;
+using Services.Interfaces;
+using Services.Models;
+using DataAccessLayer.Interfaces;
 
 namespace Services
 {
     public class BaseService<ServiceType, DbType> : IService<ServiceType> 
         where ServiceType : Entity 
-        where DbType : IDataAccessLayer.Entities.Entity
+        where DbType : DataAccessLayer.Entities.Entity
     {
         private IRepository<DbType> _repository;
 
@@ -21,9 +19,9 @@ namespace Services
             _repository = repository;
         }
 
-        public async Task<ServiceType> Create(ServiceType entity)
+        public async Task<ServiceType> Create(ServiceType model)
         {
-            var result = await _repository.Create(Mapper.Map<DbType>(entity));
+            var result = await _repository.Create(Mapper.Map<DbType>(model));
 
             return Mapper.Map<ServiceType>(result);
         }
@@ -45,11 +43,11 @@ namespace Services
             return Mapper.Map<List<ServiceType>>(entities);
         }
 
-        public async Task<bool> Update(ServiceType entity)
+        public async Task<bool> Update(ServiceType model)
         {
             try
             {
-                await _repository.Update(Mapper.Map<DbType>(entity));
+                await _repository.Update(Mapper.Map<DbType>(model));
 
                 return true;
             }

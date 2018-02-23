@@ -1,13 +1,13 @@
-﻿using IServices.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IServices
+namespace DataAccessLayer.Entities
 {
-    public interface IPostService : IService<Post>
+    public class Entity
     {
+        public int Id { get; set; }
     }
 }

@@ -1,9 +1,8 @@
 ﻿using AutoMapper;
-using IServices;
 using Models;
+using Services.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -45,7 +44,7 @@ namespace BlogAPI.Controllers
                 return BadRequest();
             }
 
-            item = Mapper.Map<Comment>(await _commentService.Create(Mapper.Map<IServices.Entities.Comment>(item)));
+            item = Mapper.Map<Comment>(await _commentService.Create(Mapper.Map<Services.Models.Comment>(item)));
             var response = Request.CreateResponse(HttpStatusCode.Created, item);
 
             string uri = Url.Link("DefaultApi", new { id = item.Id });
@@ -62,7 +61,7 @@ namespace BlogAPI.Controllers
             }
 
             comment.Id = id;
-            var isUpdated = await _commentService.Update(Mapper.Map<IServices.Entities.Comment>(comment));
+            var isUpdated = await _commentService.Update(Mapper.Map<Services.Models.Comment>(comment));
             if (!isUpdated)
             {
                 return NotFound();

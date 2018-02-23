@@ -1,6 +1,6 @@
-﻿using IDataAccessLayer.Entities;
+﻿using DataAccessLayer.Entities;
 
-namespace IDataAccessLayer
+namespace DataAccessLayer.Interfaces
 {
     public interface IPostRepository : IRepository<Post>
     {

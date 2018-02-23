@@ -1,11 +1,4 @@
 ﻿using AutoMapper;
-using Models;
-using IDataAccessLayer.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Mapping.MappingProfiles
 {
@@ -13,11 +6,11 @@ namespace Mapping.MappingProfiles
     {
         public PostMappingProfile()
         {
-            CreateMap<IDataAccessLayer.Entities.Post, IServices.Entities.Post>();
-            CreateMap<IServices.Entities.Post, IDataAccessLayer.Entities.Post>();
+            CreateMap<DataAccessLayer.Entities.Post, Services.Models.Post>();
+            CreateMap<Services.Models.Post, DataAccessLayer.Entities.Post>();
 
-            CreateMap<Models.Post, IServices.Entities.Post>();
-            CreateMap<IServices.Entities.Post, Models.Post>();
+            CreateMap<Models.Post, Services.Models.Post>();
+            CreateMap<Services.Models.Post, Models.Post>();
         }
     }
 }

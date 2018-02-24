@@ -35,7 +35,7 @@ namespace DataAccessLayer
             }
             else
             {
-                throw new KeyNotFoundException($"{entity.Id} is invalid Id.");
+                throw new KeyNotFoundException($"{id} is invalid Id.");
             }
         }
 

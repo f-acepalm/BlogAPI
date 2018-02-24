@@ -12,11 +12,11 @@ namespace DataAccessLayer
             Database.SetInitializer(new BlogDbInitializer()); 
         }
 
-        public IDbSet<Post> Posts { get; set; }
+        public virtual IDbSet<Post> Posts { get; set; }
 
-        public IDbSet<Comment> Comments { get; set; }
+        public virtual IDbSet<Comment> Comments { get; set; }
 
-        public async Task MarkAsModified<T>(T item) where T : Entity
+        public virtual async Task MarkAsModified<T>(T item) where T : Entity
         {
             Entry(item).State = EntityState.Modified;
             await SaveChangesAsync();

@@ -35,7 +35,7 @@ namespace DataAccessLayer
             }
             else
             {
-                throw new ArgumentException($"{entity.Id} is invalid Id.");
+                throw new KeyNotFoundException($"{entity.Id} is invalid Id.");
             }
         }
 
@@ -57,7 +57,7 @@ namespace DataAccessLayer
             }
             catch (DbUpdateConcurrencyException)
             {
-                throw new ArgumentException($"{entity.Id} is invalid Id.");
+                throw new KeyNotFoundException($"{entity.Id} is invalid Id.");
             }
         }
     }

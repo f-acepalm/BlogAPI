@@ -8,6 +8,7 @@ namespace Models
 {
     public class Comment : BaseModel
     {
+        [Required]
         public int PostId { get; set; }
 
         [Required]

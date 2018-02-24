@@ -1,4 +1,5 @@
-﻿using Mapping;
+﻿using BlogAPI.Filters;
+using Mapping;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +23,10 @@ namespace BlogAPI
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-            
+
+            config.Filters.Add(new KeyNotFoundExceptionFilterAttribute());
+            config.Filters.Add(new ArgumentNullExceptionFilterAttribute());
+
             config.DependencyResolver = new UnityResolver(UnityContainerConfiguration.GetContainer());
             AutoMapperInitializer.Initialize();
         }

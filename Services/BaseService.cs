@@ -37,9 +37,9 @@ namespace Services
             {
                 await _repository.Delete(id);
             }
-            catch (ArgumentException ex)
+            catch (KeyNotFoundException ex)
             {
-                throw new ArgumentException($"{id} is invalid Id.", ex);
+                throw new KeyNotFoundException($"{id} is invalid Id.", ex);
             }
         }
 
@@ -49,7 +49,7 @@ namespace Services
 
             if (entity == null)
             {
-                throw new ArgumentException($"No item with Id = {id}.");
+                throw new KeyNotFoundException($"No item with Id = {id}.");
             }
 
             return Mapper.Map<TModel>(entity);
@@ -75,9 +75,9 @@ namespace Services
             {
                 await _repository.Update(Mapper.Map<TDbEntity>(model));
             }
-            catch (ArgumentException ex)
+            catch (KeyNotFoundException ex)
             {
-                throw new ArgumentException($"{id} is invalid Id.", ex);
+                throw new KeyNotFoundException($"{id} is invalid Id.", ex);
             }
         }
     }

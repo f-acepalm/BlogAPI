@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Services.Models
 {
-    public class Post : Entity
+    public class Post : BaseModel
     {
         public Post()
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Services.Models
 {
-    public class Comment : Entity
+    public class Comment : BaseModel
     {
         public int PostId { get; set; }
 

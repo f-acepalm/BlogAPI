@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web.Http;
 using Unity;
 using Unity.Lifetime;
+using System.Web.Http.Filters;
 
 namespace BlogAPI
 {
@@ -24,11 +25,19 @@ namespace BlogAPI
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            config.Filters.Add(new KeyNotFoundExceptionFilterAttribute());
-            config.Filters.Add(new ArgumentNullExceptionFilterAttribute());
+            config.Filters.AddRange(GetFilters());
 
             config.DependencyResolver = new UnityResolver(UnityContainerConfiguration.GetContainer());
             AutoMapperInitializer.Initialize();
+        }
+
+        private static IEnumerable<IFilter> GetFilters()
+        {
+            return new IFilter[]
+            {
+                new KeyNotFoundExceptionFilterAttribute(),
+                new ArgumentNullExceptionFilterAttribute(),
+            };
         }
     }
 }

@@ -13,8 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DependencyResolver", "DependencyResolver\DependencyResolver.csproj", "{8E7799BD-7989-462D-AA90-6B7213B0A6C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForTest", "ForTest\ForTest.csproj", "{F99BBC1A-15F4-4C0B-AB5B-B0ECBB2E486A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mapping", "Mapping\Mapping.csproj", "{AABDD663-37AB-4778-9056-C89D9865ED1F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{0DB4B416-396C-4BED-8D40-ABDDA5848237}"
@@ -45,10 +43,6 @@ Global
 		{8E7799BD-7989-462D-AA90-6B7213B0A6C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E7799BD-7989-462D-AA90-6B7213B0A6C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E7799BD-7989-462D-AA90-6B7213B0A6C8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F99BBC1A-15F4-4C0B-AB5B-B0ECBB2E486A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F99BBC1A-15F4-4C0B-AB5B-B0ECBB2E486A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F99BBC1A-15F4-4C0B-AB5B-B0ECBB2E486A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F99BBC1A-15F4-4C0B-AB5B-B0ECBB2E486A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AABDD663-37AB-4778-9056-C89D9865ED1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{AABDD663-37AB-4778-9056-C89D9865ED1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AABDD663-37AB-4778-9056-C89D9865ED1F}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -56,7 +56,7 @@ namespace BlogAPI.Tests.Tests
         }
 
         [TestMethod]
-        public async Task CreateTest()
+        public async Task Create_ValidModel_SuccessfullyAdded()
         {
             var post = GetTestModel();
             var result = await _service.Create(post);
@@ -69,14 +69,14 @@ namespace BlogAPI.Tests.Tests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public async Task CreateWithNullArgumentTest()
+        public async Task Create_ModelIsNull_ArgumentNullException()
         {
             Models.Post post = null;
             var result = await _service.Create(post);
         }
 
         [TestMethod]
-        public async Task UpdateTest()
+        public async Task Update_ValidModel_SuccessfullyUpdated()
         {
             var post = GetTestModel();
             await _service.Update(_data.First().Id, post);
@@ -86,7 +86,7 @@ namespace BlogAPI.Tests.Tests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public async Task UpdateWithNullArgumentTest()
+        public async Task Update_ModelIsNull_ArgumentNullException()
         {
             Models.Post post = null;
             await _service.Update(0, post);
@@ -94,7 +94,7 @@ namespace BlogAPI.Tests.Tests
 
         [TestMethod]
         [ExpectedException(typeof(KeyNotFoundException))]
-        public async Task UpdateWithKeyNotFoundExceptionTest()
+        public async Task Update_IdDoesNotExist_KeyNotFoundException()
         {
             _mockContext.Setup(x => x.MarkAsModified(It.IsAny<Post>())).Throws<DbUpdateConcurrencyException>();
 
@@ -103,7 +103,7 @@ namespace BlogAPI.Tests.Tests
         }
 
         [TestMethod]
-        public async Task GetAllTest()
+        public async Task GetAll_ReturnedThreeElements()
         {
             var result = await _service.GetAll();
 
@@ -114,7 +114,7 @@ namespace BlogAPI.Tests.Tests
         }
 
         [TestMethod]
-        public async Task GetTest()
+        public async Task Get_First_IdsAreEqual()
         {
             var result = await _service.Get(1);
 
@@ -123,13 +123,13 @@ namespace BlogAPI.Tests.Tests
 
         [TestMethod]
         [ExpectedException(typeof(KeyNotFoundException))]
-        public async Task GetKeyNotFoundExceptionTest()
+        public async Task Get_IdDoesNotExist_KeyNotFoundExceptionTest()
         {
             var result = await _service.Get(0);
         }
 
         [TestMethod]
-        public async Task DeleteTest()
+        public async Task Delete_ValidId_RemoveWasCalled()
         {
             await _service.Delete(1);
 
@@ -139,7 +139,7 @@ namespace BlogAPI.Tests.Tests
 
         [TestMethod]
         [ExpectedException(typeof(KeyNotFoundException))]
-        public async Task DeleteKeyNotFoundExceptionTest()
+        public async Task Delete_IdDoesNotExist_KeyNotFoundException()
         {
             await _service.Delete(0);
         }

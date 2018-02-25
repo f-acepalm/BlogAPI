@@ -10,14 +10,21 @@ namespace Mapping
 {
     public class AutoMapperInitializer
     {
+        private static bool _isInitialized = false;
+
         public static void Initialize()
         {
-            Mapper.Initialize(
-                conf =>
-                {
-                    conf.AddProfile<PostMappingProfile>();
-                    conf.AddProfile<CommentMappingProfile>();
-                });
+            if (!_isInitialized)
+            {
+                Mapper.Initialize(
+                        conf =>
+                        {
+                            conf.AddProfile<PostMappingProfile>();
+                            conf.AddProfile<CommentMappingProfile>();
+                        });
+
+                _isInitialized = true;
+            }
         }
     }
 }

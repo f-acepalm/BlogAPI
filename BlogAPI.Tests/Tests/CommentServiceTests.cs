@@ -14,15 +14,15 @@ using System.Linq;
 namespace BlogAPI.Tests
 {
     [TestClass]
-    public class CommentsServiceTests
+    public class CommentServiceTests
     {
         private Mock<DbSet<Comment>> _mockSet;
         private Mock<BlogDbContext> _mockContext;
         private CommentService _service;
         private IQueryable<Comment> _data;
 
-        [AssemblyInitialize]
-        public static void AssemblyInit(TestContext context)
+        [ClassInitialize]
+        public static void ClassInit(TestContext context)
         {
             AutoMapperInitializer.Initialize();
         }
